@@ -19,6 +19,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include "Account.hpp"
 
 class Account {
 
@@ -27,62 +28,27 @@ public:
 	typedef Account		t;
 
 	// --->getters<--- bank
-	static int	getNbAccounts( void )		{return _nbAccounts;};
-	static int	getTotalAmount( void )		{return _totalAmount;};
-	static int	getNbDeposits( void )		{return _totalNbDeposits;};
-	static int	getNbWithdrawals( void )	{return _totalNbWithdrawals;};
+	static int	getNbAccounts( void );
+	static int	getTotalAmount( void );
+	static int	getNbDeposits( void );
+	static int	getNbWithdrawals( void );
 
 	// --->getters<--- account
-	int	get_accountIndex( void )		{return _accountIndex;};
-	int	get_amount( void )				{return _amount;};
-	int	get_nbDeposits( void )			{return _nbDeposits;};
-	int	get_nbWithdrawals( void )		{return _nbWithdrawals;};
+	int	get_accountIndex( void );
+	int	get_amount( void );
+	int	get_nbDeposits( void );
+	int	get_nbWithdrawals( void );
 
-	Account( int initial_deposit )
-	{
-		_accountIndex = _nbAccounts;
-		_nbAccounts++;
-		_amount = initial_deposit;
-		_totalAmount += initial_deposit;
-		_nbDeposits = 0;
-		_nbWithdrawals = 0;
-	};
-	~Account( void );
+	Account( int initial_deposit );
 
-	void	makeDeposit( int deposit )
-	{
-		if (deposit > 0)
-		{
-			//bank
-			_totalAmount += deposit;
-			_totalNbDeposits++;
-			//account
-			_amount += deposit;	
-			_nbDeposits++;
-		}
-	}
 
-	bool	makeWithdrawal( int withdrawal )
-	{
-		if (withdrawal < 0 || withdrawal > _amount || _totalAmount < withdrawal)
-			return false;
-		//bank
-		_totalAmount -= withdrawal;
-		_totalNbWithdrawals++;
-		//account
-		_amount -= withdrawal;	
-		_nbWithdrawals++;
-		return true;
-	}
+	void	makeDeposit( int deposit );
+
+	bool	makeWithdrawal( int withdrawal );
 	
 	int		checkAmount( void ) const; // display total amount of money in the bank
 	//index:0;amount:42;deposits:0;withdrawals:0
-	void	displayStatus( void )const {
-		std::cout<<"index:"<< _accountIndex <<";";
-		std::cout<<"amount:"<< _amount <<";";
-		std::cout<<"deposits:"<< _accountIndex <<";";
-		std::cout<<"withdrawals:"<< _accountIndex <<std::endl;
-	};
+	void	displayAccountsInfos( void ) const;
 	// display info of the bank the sum off all the account info
 
 
@@ -105,7 +71,7 @@ private:
 };
 
 
-
+	~Account( void );
 // ************************************************************************** //
 // vim: set ts=4 sw=4 tw=80 noexpandtab:                                      //
 // -*- indent-tabs-mode:t;                                                   -*-
