@@ -16,62 +16,54 @@
 //                               Account Class                                //
 // ************************************************************************** //
 
+
 #include <iostream>
-#include <vector>
-#include <utility>
-#include "Account.hpp"
+#include <ctime>
 
 class Account {
+
 
 public:
 
 	typedef Account		t;
 
-	// --->getters<--- bank
 	static int	getNbAccounts( void );
 	static int	getTotalAmount( void );
 	static int	getNbDeposits( void );
 	static int	getNbWithdrawals( void );
-
-	// --->getters<--- account
-	int	get_accountIndex( void );
-	int	get_amount( void );
-	int	get_nbDeposits( void );
-	int	get_nbWithdrawals( void );
+	static void	displayAccountsInfos( void );
 
 	Account( int initial_deposit );
-
+	~Account( void );
 
 	void	makeDeposit( int deposit );
-
 	bool	makeWithdrawal( int withdrawal );
-	
-	int		checkAmount( void ) const; // display total amount of money in the bank
-	//index:0;amount:42;deposits:0;withdrawals:0
-	void	displayAccountsInfos( void ) const;
-	// display info of the bank the sum off all the account info
+	int	checkAmount( void ) const;
+
+
+	void	displayStatus( void ) const;
 
 
 private:
-	//info related to the bank in general
+
 	static int	_nbAccounts;
 	static int	_totalAmount;
 	static int	_totalNbDeposits;
 	static int	_totalNbWithdrawals;
 
 	static void	_displayTimestamp( void );
-	//info related to an account
+
 	int				_accountIndex;
 	int				_amount;
 	int				_nbDeposits;
 	int				_nbWithdrawals;
 
-	// Account( void );
+	Account( void );
 
 };
 
 
-	~Account( void );
+
 // ************************************************************************** //
 // vim: set ts=4 sw=4 tw=80 noexpandtab:                                      //
 // -*- indent-tabs-mode:t;                                                   -*-

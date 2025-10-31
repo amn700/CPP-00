@@ -1,7 +1,0 @@
-index:1;amount:54;created
-index:1;amount:54;deposits:0;withdrawals:0
-index:1;p_amount:54;deposit:765;amount:819;nb_deposits:1
-index:1;amount:819;deposits:1;withdrawals:0
-index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
-index:1;amount:785;deposits:1;withdrawals:1
-index:1;amount:785;closed
